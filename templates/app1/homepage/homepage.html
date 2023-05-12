@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
+  </head>
+  <body>
+    <header id="Header">
+      <div class="container_wrapper">
+        <a href="#" class="action_logo">
+          <img
+            src="https://st.prntscr.com/2023/04/07/0252/img/header-logo.png"
+            alt="img"
+          />
+        </a>
+
+        <select name="" class="form_select_lang">
+          <option value="English">English</option>
+          <option value="Bangla">Bangla</option>
+          <option value="Hindi">Hindi</option>
+        </select>
+        <a href="#" class="action_sign_in"> Sign in </a>
+
+        <a href="#" class="action_social action_social_twitter">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+
+        <a href="#" class="action_social action_social_facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="#" class="action_download"> Download Lightshot for free </a>
+      </div>
+    </header>
+
+    <main>
+        <div class="container_wrapper">
+            <div class="uploader_wrapper" id="uploader_wrapper">
+                <button class="btn_browse_images">
+                    Browse images
+                </button>
+                <p>
+                    or drag your images here
+                </p>
+            </div>
+            <input hidden type="file" name="file_uploader" id="file_uploader">
+        </div>
+    </main>
+
+    <script>
+      document.querySelector('#uploader_wrapper').onclick = function(){
+        document.querySelector('#file_uploader').click();
+      }
+    </script>
+  </body>
+</html>
