@@ -44,22 +44,37 @@
     </header>
 
     <main>
-        <div class="container_wrapper">
-            <div class="uploader_wrapper" id="uploader_wrapper">
-                <button class="btn_browse_images">
-                    Browse images
-                </button>
-                <p>
-                    or drag your images here
-                </p>
-            </div>
-            <input hidden type="file" name="file_uploader" id="file_uploader">
-        </div>
+      <div class="container_wrapper">
+        <form action="">
+          <div class="uploader_wrapper" id="uploader_wrapper">
+            <button class="btn_browse_images">Browse images</button>
+            <p>or drag your images here</p>
+          </div>
+          <input hidden type="file" name="file_uploader" id="file_uploader" />
+          <button class="btn_submit">Submit</button>
+        </form>
+
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit">Upload</button>
+        </form>
+      </div>
     </main>
 
     <script>
-      document.querySelector('#uploader_wrapper').onclick = function(){
-        document.querySelector('#file_uploader').click();
+      document.querySelector("#uploader_wrapper").onclick = function () {
+        document.querySelector("#file_uploader").click();
+      };
+
+      function fetchAction(url='/'){
+        fetch(url,{
+          method: 'post',
+          body: {
+            "csrfmiddlewaretoken": '{{csrf_token}}',
+            "name": document.querySelector('[name="name"]').value,
+            "image": document.querySelector('[name="image"]').value
+          }
+        })
       }
     </script>
   </body>
